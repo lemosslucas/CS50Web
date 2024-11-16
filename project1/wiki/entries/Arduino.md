@@ -1,0 +1,1 @@
+Arduino is an open-source electronics plataform based on easy-to-use hardware and software
