@@ -1,6 +1,6 @@
 # Polybook  
 A website to read books in multiple languages and become fluency  
-![image](https://github.com/user-attachments/assets/9d05cd36-29ef-4fac-ac13-ed4e2df6cda3)
+![image](https://github.com/user-attachments/assets/b0d06af6-c9ae-4c44-b195-d9f86f357a50)
 *Polybook Interface*
 
 ## Distinctiveness and Complexity  
@@ -9,31 +9,31 @@ Polybook is a website offering a multicultural library of PDF books, combining a
 The website offers several features, including:  
 - **Search**: Find PDF books available on the internet.
   - Example of Search Function:
-  ![image](https://github.com/user-attachments/assets/068daf55-1890-457a-9a33-64f22d021aca)
+  ![image](https://github.com/user-attachments/assets/0a4b9be5-c1d5-4e3e-909b-46f4ab964fbb)
   *Search Results*
 
   - You need to choose one of these links
-  ![image](https://github.com/user-attachments/assets/9fed8b96-a7b8-4923-b693-bfe82006e968)
+  ![image](https://github.com/user-attachments/assets/298e4c1e-a6cd-4874-becf-80fac9d7ce89)
   *Example of Download options*
 
 - **Upload book**: Enrich the library uploading books.
   - You need to click in upload a book and fill the requeriments, after click in save changes
-  ![image](https://github.com/user-attachments/assets/8b994103-212a-43d3-8e85-7050147f7c23) 
+  ![image](https://github.com/user-attachments/assets/734b61a9-cf2a-4e1e-98fb-bf24b9767d9a)
   *Upload Form*
 
 - **Read a book**: Open a page with all books available in the database, showing the title, cover, language, and gender. When you click on the chosen book, you can read it in a unique PDF viewer developed for Polybook.
   - Click the read book button on the top the page you are redirect to this page
-    ![image](https://github.com/user-attachments/assets/adcacf5c-53cd-4c2a-ae93-7efd3b40b920)
+    ![image](https://github.com/user-attachments/assets/1cad4ae8-ffcb-4f10-bc09-69442e36de43)
     *Books availabes*
     
-    ![image](https://github.com/user-attachments/assets/357f2071-3090-4ced-98f7-659339556638)
+    ![image](https://github.com/user-attachments/assets/f2437861-99e2-4f92-8469-8cd0fadbee83)
     *PDF viewer*
 - **Word translation and saving**: While reading, if you encounter a word you don't know, you can select it to get an instant translation. This translated word can then be saved to a database, where you can review it later.
   - Select the text and click in 'translate text' and your text are transalated
-    ![image](https://github.com/user-attachments/assets/4f356eef-dad5-4b96-b323-12bce7b7c665)
+    ![image](https://github.com/user-attachments/assets/37ec27df-ee28-463d-8573-dc1322faeec9)
     *Select Text and Translate*
     
-    ![image](https://github.com/user-attachments/assets/a7ccb21c-8f33-444b-acd7-de80ba439a37)
+    ![image](https://github.com/user-attachments/assets/94a5eb8e-1516-478d-965b-8ab4f6bf53a8)
     *Words database*
 
 This project is complex compared to many others because it integrates various technologies, including:  
