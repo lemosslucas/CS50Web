@@ -1,0 +1,93 @@
+body {
+    padding: 10px;
+}
+
+#title, #url_img, #category {
+    margin-bottom: 10px;
+    width: 50%;
+}
+
+#description {
+    margin-bottom: 10px;
+    height: 50vh;
+    width: 50%;
+}
+
+#message {
+    color:greenyellow;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#container > div {
+    margin: 20px;
+    width: 18rem;
+}
+
+#container_list {
+    width: 20rem;
+    margin-bottom: 20px;
+}
+
+#container_list > div, h6{
+    margin-bottom: 20px;
+}
+
+#container_list > div > input {
+    margin-bottom: 10px;
+}
+
+#new_bid_offer {
+    width: 320px;
+    margin-top:0px;
+}
+
+#comment {
+    width: 320px;
+    margin-top:15px;
+}
+
+.fixed-size-img {
+    width: 100%; 
+    height: 250px; 
+    object-fit: cover; 
+    object-position: center; 
+}
+
+.comment-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 10px;
+    margin-bottom: 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+    width: 300px;
+    height: 100px;
+}
+
+.container_comment {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.comment-user {
+    color: #007bff; 
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment-text {
+    color: #333; 
+    font-size: 0.95rem; 
+    line-height: 1.4; 
+}

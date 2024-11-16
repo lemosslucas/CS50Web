@@ -1,0 +1,25 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if message %}
+        <div id = 'message' class ='fw-bold'>{{ message }}</div>
+    {% endif %}
+    
+    <h2>Active Listings</h2>
+
+    <div id = 'container'>
+        {% for listing in listings %}
+            {% if not listing.closed %}
+                <div class="border border-dark-subtle" >
+                    <img class="fixed-size-img" src="{{ listing.url_img }}" alt="Image of the item">
+                    <h5>{{ listing.title }} </h5>
+                    <p> {{ listing.description }}</p>
+                    <p> Price: {{ listing.bid.new_bid_offer }} $</p>
+                    <a class="btn btn-primary" href="{% url 'listing' listing.id %}"> Click Here to view</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+        
+{% endblock %}

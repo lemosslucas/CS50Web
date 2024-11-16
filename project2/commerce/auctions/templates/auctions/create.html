@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1>List your item</h1>
+
+    <form action="{% url 'create_list' %}" method="POST">
+        {% csrf_token %}
+        
+        <input type="text" placeholder='Insert the title' name="title" id='title'>
+        <br>
+        <input type="text" name="url_img" id="url_img" placeholder="Insert a url of your item (optional)">
+        <br>
+        <input type="text" name ='category' id='category' placeholder="Insert the category of this item">
+        <br>
+        <input type="text" name="bid" id="category" placeholder="Insert the initial bid ($)">
+        <textarea name="description" placeholder="Insert a description" id='description'></textarea>
+        <br>
+        <input type="submit" value='Submit' class="btn btn-primary btn-lg active">
+
+    </form>
+{% endblock %}

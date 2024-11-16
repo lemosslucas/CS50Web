@@ -1,0 +1,86 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    
+    <h1>Listing: {{ listing.title }}</h1>
+    
+    <div id="container_list">
+
+        {% if listing.closed %}
+            {% if request.user == listing.bid.user %}
+                <h4>You win the Auction</h4>
+            {% endif %}
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            {% if is_listing_in_watchlist %}
+                <a class="btn btn-success btn-sm" href="{% url 'remove_watchlist' listing.id %}">Watchlist</a>
+            {% else %}
+                <a class="btn btn-secondary btn-sm" href="{% url 'add_watchlist' listing.id %}">Watchlist</a>
+            {% endif %}
+        {% endif %} 
+        
+        {% if listing.user_own == request.user and not listing.closed %}
+            <a class="btn btn-danger btn-sm" href="{% url 'close_auction' listing.id%}">Close auction</a>
+        {% endif %}
+
+        <div>
+            <img width="100%" src="{{listing.url_img}}" alt="Imagem item">
+            <h6>{{ listing.description }}</h5>
+            <h3>${{ listing.bid.new_bid_offer }} </h3>
+            {% if listing.closed %}
+                <h3 style="color: red;">Closed</h3>
+            {% endif %}
+        </div>
+
+        {% if user.is_authenticated %}
+        <div>
+            {% if not listing.closed %}
+                {% if message %}
+                    <h7> {{ message }} </h7>
+                {% else %}
+                    <h7> New Bid </h7>
+                {%endif%}
+                <form action="{% url 'new_bid' listing.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Bid" name="new_bid_offer" id="new_bid_offer">
+                    <br>
+                    <input type="submit" value='Place Bid' class="btn btn-primary btn-lg active btn-sm">
+                </form>
+            {% endif %}
+
+            <form action="{% url 'add_comment' listing.id %}" method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="Add comment" name="comment" id="comment">
+                <br>
+                <input type="submit" value='Send comment' class="btn btn-primary btn-lg active btn-sm">
+            </form>
+        </div>
+        {% endif %}
+
+        <div>
+            <h3>Details</h3>
+            <ul>
+                <li>Listed by: <a href="index.html">{{ listing.user_own }}</a></li>
+                <li>Category: {{ listing.category }}</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Comments</h3>
+                <div class="container_comment">
+                    {% for comment in comments %}
+                        <div class="comment-container">
+                            <h4 class="comment-user">@{{comment.user }}</h4>
+                            <h6 class="comment-text">{{ comment.text }}</h6>
+                        </div>
+                    {% endfor %}
+                </div>
+        </div>
+
+        {% if not user.is_authenticated %}
+            <a href="{% url 'login' %}">Click here to login for and have access all functions</a>
+        {% endif %}            
+    </div>
+
+{% endblock %}
