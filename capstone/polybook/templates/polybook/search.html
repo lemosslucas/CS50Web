@@ -1,0 +1,64 @@
+{% extends "polybook/layout.html" %}
+
+{% block body %}
+
+{% if books_in_the_page %}
+    <h1 style="text-align: center;">Book Availabes in our site</h1>
+        <div>
+            <div id="container">
+                {% for book in books_in_the_page %}
+                        <a class="border-link" id="{{ book.id }}"  href="{% url 'read_book' book.id %}" style="text-decoration: none;">
+                            <img src="{{ book.cover_image.url }}" alt="Cover of the {{book.name}}">
+                            <div class="book-details">
+                                <h2>{{ book.name }}</h2>
+                                <p><strong>Gender:</strong> {{ book.gender }}</p>
+                                <p><strong>Language:</strong> {{ book.language }}</p>
+                                <p><strong>Posted by:</strong> {{ book.user }}</p>
+                            </div>
+                        </a>
+                {% endfor %}
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <nav aria-label="Page navigation example" style="padding: 20px;">
+                    <ul class="pagination">
+                        {% if books_in_the_page.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ books_in_the_page.previous_page_number }}">Previous</a></li>
+                        {% endif %}
+            
+                        {% if books_in_the_page.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ books_in_the_page.next_page_number }}">Next</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    {% endif %}
+    
+    {% if links and books_in_the_page %}
+    <div class="alert alert-warning" role="alert">
+        If not is version do you like, Below are links for you to download another version
+    </div>
+    {% endif %}
+    
+    {% if links %}
+        {% if not books_in_the_page %}
+            <h1 style="padding-left: 20px;">Links to download "{{ name }}" in PDF</h1>
+        {%endif%}
+
+        <div class="container-links">
+            {% for link in links %}
+                <div class="border-link">
+                    <a href="{{link}}" target="_blank">{{ link }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <script>
+        document.querySelectorAll('.border-link a').forEach(link => {
+            const url = new URL(link.href);
+            link.textContent = url.hostname;
+        });
+    </script>
+{% endblock %}
+

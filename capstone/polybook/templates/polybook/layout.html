@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Polybook{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'polybook/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div id="polybook-logo">
+                <img src="media/polybook_logo.jpg" alt="Polybook logo">
+            </div>
+            <a class="navbar-brand" href="{% url 'index' %}">Polybook</a>
+        
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <nav class="navbar bg-body-tertiary">
+                            <div class="container-fluid">
+                              <form action="{% url 'search_book' %}" method="POST" class="d-flex">
+                                {% csrf_token %}
+                                <input class="form-control me-2" id='book_name' name="book_name" type="search" placeholder="Search a book" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                              </form>
+                            </div>
+                        </nav>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" style="padding-top: 10px; font-size: 20px;" href="{% url 'search_book' %}">Read a book</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="padding-top: 10px; font-size: 20px;" id="upload-button" data-bs-toggle="modal" data-bs-target="#modal-upload">Upload book</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                
+                <div class="modal fade" id="modal-upload" tabindex="-1" aria-labelledby="modal-upload" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Upload your book</h1>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{% url 'upload_book'%}" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input name="book_name" type="text" placeholder="Name">
+                                <br>
+                                <select name="gender">
+                                    <option value="" disabled selected>Choose a genere</option>
+                                    <option value="fiction">Fiction</option>
+                                    <option value="non-fiction">Non-Fiction</option>
+                                    <option value="language">Language</option>
+                                    <option value="mystery">Mystery</option>
+                                    <option value="fantasy">Fantasy</option>
+                                    <option value="romance">Romance</option>
+                                    <option value="science-fiction">Science Fiction</option>
+                                    <option value="biography">Biography</option>
+                                    <option value="historical">Historical</option>
+                                    <option value="thriller">Thriller</option>
+                                    <option value="self-help">Self-Help</option>
+                                </select>
+                                <br>
+                                <select name="language">
+                                    <option value="" disabled selected>Choose a language</option>
+                                    <option value="en">English</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
+                                    <option value="it">Italian</option>
+                                    <option value="pt">Portuguese</option>
+                                    <option value="ru">Russian</option>
+                                    <option value="zh">Chinese</option>
+                                    <option value="ja">Japanese</option>
+                                    <option value="ko">Korean</option>
+                                    <option value="ar">Arabic</option>
+                                </select>
+                                <input type="file" name="pdf_file" required>
+                        </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" id='submit-button' class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                      </div>
+                    </div>
+                </div>
+                
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                                </svg>
+                                <strong>{{ user.username }}</strong>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        
+
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

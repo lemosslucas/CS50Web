@@ -1,0 +1,66 @@
+{% extends "polybook/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+    <div class="button-container">
+        <button class="page-link" id="previous-page">Previous</button>        
+        <select id="valueLanguage">
+            <option value="" disabled selected>Target Language</option>
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="it">Italian</option>
+            <option value="pt">Portuguese</option>
+            <option value="ru">Russian</option>
+            <option value="zh">Chinese</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="ar">Arabic</option>
+        </select>
+
+        <button class="page-link" id="open-button">Open the words save</button>
+        <button class="page-link" id="next-page">Next</button>
+    </div>
+    
+    <div class="button-container">
+        <span id="ind-page"></span>
+    </div>
+    
+    <div class="context-menu">
+        <div class="button-container">
+            <button class="page-link" onclick="translateText()">Translate Text</button>
+            <button class="page-link" onclick="saveText()">Save the Text</button>
+        </div>
+        <span id="translated-text">Translated text: </span>
+    </div>
+
+    <div id="pdf-view" data-pdf-url="{{ pdf_file.url }}">
+        <div class="pdf-page"></div>
+        <div class="container-words">
+            <div class="button-container">
+                <button class="page-link" id="close-button">Close</button>
+                {% if words_save_in_the_page.has_previous %}
+                    <a class="page-link" href="?page={{ words_save_in_the_page.previous_page_number }}">Previous</a>
+                {% endif %}
+                {% if words_save_in_the_page.has_next %}
+                    <a class="page-link" href="?page={{ words_save_in_the_page.next_page_number }}">Next</a>
+                {% endif %}
+            </div>
+            <div class="words-saves">
+                <h1>Words save</h1>
+                <ul>
+                    {% for word in words_save_in_the_page %}
+                        <li>{{word.word_source}} ({{word.source_language}}) --> {{word.word_target}} ({{word.target_language}})</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script> const imageURL = "{{book.cover_image.url}}", altContent = "Cover of the {{book.name}}", bookLanguage = "{{book.language}}";</script>
+    <script src="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+    <script src="{% static 'polybook/read.js' %}"></script>
+{% endblock %}
+

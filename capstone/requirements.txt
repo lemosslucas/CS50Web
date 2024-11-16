@@ -1,0 +1,5 @@
+django
+beautifulsoup4
+pymupdf
+requests
+urllib3
