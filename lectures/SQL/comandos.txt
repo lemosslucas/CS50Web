@@ -1,0 +1,17 @@
+cria arquivo : touch nome.sql
+entra no sistema sql: sqlite3 nome.sql
+cria tabela: CREATE TABLE nome (
+    variavel tipo de variavel
+    id INTEGER PRIMARY KEY AUTOINCREMENT
+)
+mostra as tabelas existentes: .tables
+mostra os dados existentes na tablea: SELECT * FROM nome
+adiciona dados a tabela: INSERT INTO nome (v1, v2, v3) VALUES ('AA', 'BB', 'CC')
+MELHOR FORMATACAO: .mode columns; .headers yes;
+mostra os dados especificos: SELECT * FROM nome WHERE v1 = 'A';
+OS BOOLEANOS SAO PERMETIDOS TAMBEM 
+Atualizar uma tabela : UPDATE nome
+SET v1 = x
+WHERE v2 = 'B'
+AND v3 = 'C';
+apagar dados = DELETE FROM nome WHERE v1 = 'c';
