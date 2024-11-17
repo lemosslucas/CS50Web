@@ -1,6 +1,5 @@
 const url = document.querySelector("#pdf-view").getAttribute('data-pdf-url');
 const pdfjsLib = window['pdfjsLib'];
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
 
 let pdfDoc = null;
 let selectedText = "";

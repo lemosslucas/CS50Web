@@ -78,7 +78,7 @@ def search_book(request):
 
         books_found = []
         for book in books:
-            if book_name in book.name:
+            if book_name.lower() in book.name.lower():
                 books_found.append(book)
 
             paginator = Paginator(books_found, number_books_in_page)
@@ -96,18 +96,22 @@ def search_book(request):
                 if title and 'pdf' in title.text.lower():
                     link_tag = div.find('a')
                     if link_tag:
-                        link = link_tag['href'].strip('/url?q=')
-                        
-                        #avoid repetions links
-                        parsed_link = urlparse(link)
-                        dominio = parsed_link.netloc
-                        if dominio not in dominios:
-                            links_download.append(link)
-                            dominios.append(dominio)
+                        raw_link = link_tag['href']
+
+                        if raw_link.startswith('/url?q='):
+                            clean_link = raw_link.split('/url?q=')[1]
+                            clean_link = clean_link.split('&')[0]
+
+                            parsed_link = urlparse(clean_link)
+                            dominio = parsed_link.netloc
+                            
+                            if dominio not in dominios:
+                                links_download.append(clean_link)
+                                dominios.append(dominio)
 
             #remove the search url
             links_download.pop(0)
-
+            
             return render(request, 'polybook/search.html', {
                 'links': links_download,
                 'name': book_name,
