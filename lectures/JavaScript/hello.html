@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Hello</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                //default submit is disabled
+                document.querySelector('#submit').disabled = true;
+                
+                //if text != null the submit is abled
+                document.querySelector('#name').onkeyup = function() {
+                    if (document.querySelector('#name').value.length > 0) {
+                        document.querySelector('#submit').disabled = false;
+                    } else {
+                        document.querySelector('#submit').disabled = true;                        
+                    }
+                }
+
+                document.querySelector('form').onsubmit = function() {
+                    //event.preventDefault();
+                    let name = document.querySelector('#name').value;
+                    document.querySelector('#texto').innerHTML = `Hello ${name}`;
+                }
+            })
+        </script>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        <h2 id ='texto'></h2>
+        <form>
+            <input type="text" id="name" placeholder="Name">
+            <input id ='submit' type="submit">
+        </form>
+    </body>
+</html>

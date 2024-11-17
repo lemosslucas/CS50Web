@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Form</title>
+    </head>
+    <body>
+        Teste de Formulario, mas sem o banco de dados
+        <form>
+            <div>
+                <input type="text" placeholder="Seu 1° nome" nome ="nome"><br>
+                <input type="text" placeholder="Seu sobrenome" sobrenome ="sobrenome"><br>
+                <input type="text" placeholder="Sua idade" idade ="idade"><br>    
+            </div>
+            <br>
+            <div>
+                <input type="text" placeholder="Email" email = "email"><br>
+                <input type="password" placeholder="Sua senha" senha ="senha"><br>
+            </div>
+            <br>
+
+            <div>
+                Escolha um <br>
+                Sla 1<input type="radio" name="opcao" id="sla1"> <br>
+                Sla 2<input type="radio" name="opcao" id="sla2"> 
+            </div>
+
+            <br>
+            <div>
+                <input name="contry" list="countries" placeholder="Seu pais">
+                <datalist id="countries">
+                    <option value="Brasil">
+                    <option value= "Italia">
+                    <option value= "EUA">
+                </datalist>
+            </div>
+            
+            <input type="submit">
+        </form>    
+    </body>
+</html>

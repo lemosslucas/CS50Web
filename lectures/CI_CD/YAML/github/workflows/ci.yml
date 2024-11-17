@@ -1,0 +1,12 @@
+name: Testing
+on: push
+
+jobs:
+  test_project:
+    runs-os: ubuntu-latest
+    steps:
+    - uses: auctions/checkout@2
+    - name: Run Django Unit tests
+      run: 
+        pip install --user django
+        python manage.py test

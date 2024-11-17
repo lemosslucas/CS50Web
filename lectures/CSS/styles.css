@@ -1,0 +1,19 @@
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+h2 {
+    color: red;
+    text-align: center;
+}
+
+p.left {
+    color: green;
+    text-align: left;
+}
+
+p.right {
+    color: purple;
+    text-align: right;
+}
