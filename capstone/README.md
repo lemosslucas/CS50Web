@@ -39,7 +39,9 @@ The website offers several features, including:
 This project is complex compared to many others because it integrates various technologies, including:  
 1. **Web scraping** to find and download books in the web.  
 2. **PDF-to-text conversion** in Python to enable text-based features.  
-3. **JavaScript functionality** for creating an interactive PDF viewer and enabling word selection and translation on the website.  
+3. **JavaScript functionality** for creating an interactive PDF viewer and enabling word selection and translation on the website.
+   
+If you'd like to see a video explanation of this project, just access this [link](https://youtu.be/W23PkWz3hFM).
 
 ## File Structure  
 - `db.sqlite3`: The SQL database file.  
@@ -97,7 +99,7 @@ python manage.py createsuperuser
 
 ### APIs
 - **[MyMemory Translated](https://mymemory.translated.net/doc/spec.php)** API for real-time text translation.
-
+  
 # Credit
 ### Developer
 - **[Lucas Lemos Ricaldoni](https://github.com/lemosslucas)**
