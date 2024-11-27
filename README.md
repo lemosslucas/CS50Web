@@ -3,7 +3,7 @@ This repository contains all my solutions to Harvard's [CS50’s Web Programming
 The course focuses on designing and implementing web applications in python using technologies like Django and Bootstrap. Topics include database design, scalability, security, user experience, APIs, and interactive UIs.
 
 
-# File Structure
+## File Structure
 - `capstone`: Capstone - **Polybook** the website to learn a foregin language
 - `lectures`: My annotations and code snippets from the course lectures.
 - `project0`: Google page project with HTML, CSS, and Bootstrap.
@@ -49,7 +49,7 @@ python manage.py createsuperuser
 - **[Django](https://www.djangoproject.com/)**: For backend development and database management.
 - **[Bootstrap](https://getbootstrap.com/)**: For front-end development.
 
-# Developer
+## Developer
 - **[Lucas Lemos Ricaldoni](https://github.com/lemosslucas)**
 
 ## License
