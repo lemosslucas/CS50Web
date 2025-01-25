@@ -53,4 +53,4 @@ python manage.py createsuperuser
 - **[Lucas Lemos Ricaldoni](https://github.com/lemosslucas)**
 
 ## License
-This project is licensed under the MIT License. See the file [LICENSE.md](https://github.com/lemosslucas/CS50Web/blob/main/LICENSE) for details.
+This project is licensed under the Apache License. See the file [LICENSE.md](https://github.com/lemosslucas/CS50Web/blob/main/LICENSE) for details.
